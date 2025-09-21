@@ -17,7 +17,7 @@ while score [pring "Hi"] - the usual "while" is no different from the others
  pring "hi"
 waiting(10) - wait command
  pring "After waiting hi!"
-Stop:Program - stopping program
-Clear:Console - clears console
+stop:Program - stopping program
+clear:Console - clears console
 func - don't working, it's still in dev
 return - the usual "return" is no different from the others
