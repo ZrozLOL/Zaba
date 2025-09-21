@@ -20,5 +20,7 @@ waiting(10) - wait command
  pring "After waiting hi!"
 stop:Program - stopping program
 clear:Console - clears console
-func - don't working, it's still in dev
+func Zaba() [pring "Hello"] - make a function
 return - the usual "return" is no different from the others
+
+Check Projects file, and try to 
