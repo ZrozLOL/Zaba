@@ -12,7 +12,7 @@ Hello, you using **zaba+**, you need to know command meaning.(THIS IS ALL COMAND
 
 ### Imports
   ### window import
-- `import window` — importing something like window, zabgame
+  - `import` — importing something like window, zabgame
   - `:CreateNewForm("My game")` — creating new form (you can set it)  
   - `:CreateButton("Click!")` — creating new button  
   - `:OnClick [pring "Clicked!"]` — click event  
