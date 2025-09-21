@@ -1,4 +1,4 @@
-# Zaba-
+# Zaba+
 A new programming language!
 
 Hello, you using zaba+, you need to know command meaning.
@@ -11,6 +11,7 @@ import window - importing something for example "window"
 	sub-events from import
 	:CreateNewForm("My game") - creating new form (you can setting it)
 	:CreateButton("Click!") - creating new button (you can setting it)
+	:OnClick [pring "Clicked!"] - click event
 	:CreateLabel("Score: 0") - creating new label(you can setting it)
 
 while score [pring "Hi"] - the usual "while" is no different from the others
