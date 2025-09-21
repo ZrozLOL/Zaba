@@ -1,0 +1,5 @@
+pring "Hi" + "Hi"        
+pring "Hello " + "World" 
+pring "Count: " + 5      
+local name = "Zaba"
+pring "Language: " + name 

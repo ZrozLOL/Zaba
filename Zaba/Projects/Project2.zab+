@@ -1,0 +1,7 @@
+import window
+window:CreateNewForm("lol")
+local btn = window:CreateButton("Click!")
+
+btn:OnClick[
+pring 2+2*2
+prins "Hello! Dima!"]

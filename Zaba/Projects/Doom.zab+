@@ -1,0 +1,82 @@
+import window
+
+local form = window:CreateNewForm("🔥 DOOM ULTRA 🔥")
+
+local hpLabel = window:CreateLabel("HP: 100")
+local ammoLabel = window:CreateLabel("Ammo: 6")
+local enemyLabel = window:CreateLabel("Enemy HP: 30")
+local scoreLabel = window:CreateLabel("Score: 0")
+
+local logLabel = window:CreateLabel(">>> Welcome to DOOM ULTRA <<<")
+
+local shoot = window:CreateButton("🔫 Shoot")
+local reload = window:CreateButton("🔄 Reload")
+local heal = window:CreateButton("💊 Heal")
+local exit = window:CreateButton("🚪 Exit")
+
+let hp = 100
+let ammo = 6
+let maxAmmo = 6
+let enemy = 30
+let score = 0
+let demonPower = 5
+let wave = 1
+
+logLabel.Text = "A demon appeared! HP: " + enemy
+
+shoot:OnClick [
+    if ammo > 0 [
+        let ammo = ammo - 1
+        let enemy = enemy - 10
+        ammoLabel.Text = "Ammo: " + ammo
+        enemyLabel.Text = "Enemy HP: " + enemy
+        logLabel.Text = "You shot the demon! -10 HP"
+
+        if enemy < 1 [
+            let score = score + 100
+            scoreLabel.Text = "Score: " + score
+            logLabel.Text = "🔥 Demon defeated! Score +100"
+
+            let wave = wave + 1
+            let enemy = 20 + wave * 10
+            let demonPower = 5 + wave
+            enemyLabel.Text = "Enemy HP: " + enemy
+            logLabel.Text = "👹 New Demon spawned! HP: " + enemy
+        ]
+    ]
+    else [
+        logLabel.Text = "❌ No ammo! Reload!"
+    ]
+]
+
+reload:OnClick [
+    let ammo = maxAmmo
+    ammoLabel.Text = "Ammo: " + ammo
+    logLabel.Text = "🔄 Reloaded!"
+]
+
+heal:OnClick [
+    let hp = hp + 20
+    if hp > 100 [ let hp = 100 ]
+    hpLabel.Text = "HP: " + hp
+    logLabel.Text = "💊 You healed +20 HP!"
+]
+
+exit:OnClick [
+    logLabel.Text = "👋 Exiting DOOM ULTRA..."
+    stop:Program
+]
+
+while hp > 0 [
+    waiting(2)
+
+    let hp = hp - demonPower
+    hpLabel.Text = "HP: " + hp
+    logLabel.Text = "👹 Demon attacked! -" + demonPower + " HP"
+
+    if hp < 1 [
+        hpLabel.Text = "💀 GAME OVER"
+        logLabel.Text = "☠️ You died. Final score: " + score
+        stop:Program
+    ]
+]

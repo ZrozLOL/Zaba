@@ -1,0 +1,368 @@
+// 🎮 ZABA+ CLICKER ULTIMATE EDITION
+// Нові фічі: досягнення, автокліки, множники!
+
+import window
+
+// Створюємо UI
+local form = window:CreateNewForm("ZABA+ CLICKER ULTIMATE")
+local mainBtn = window:CreateButton("CLICK ME!")
+local scoreLabel = window:CreateLabel("Score: 0")
+local powerLabel = window:CreateLabel("Power: 1")
+local levelLabel = window:CreateLabel("Level: 1")
+
+// Кнопки покращень
+local upgradeBtn = window:CreateButton("Power +1")
+local megaBtn = window:CreateButton("MEGA +10") 
+local autoBtn = window:CreateButton("AutoClicker")
+local multiplierBtn = window:CreateButton("2x Multiplier")
+
+// Кнопки досягнень
+local achieveBtn = window:CreateButton("Check Achievements")
+local prestigeBtn = window:CreateButton("PRESTIGE!")
+local statsBtn = window:CreateButton("Statistics")
+local resetBtn = window:CreateButton("Reset All")
+
+// Інформаційні лейбли
+local statusLabel = window:CreateLabel("Start your clicking journey!")
+local autoLabel = window:CreateLabel("AutoClicks: 0")
+local multiLabel = window:CreateLabel("Multiplier: x1")
+
+// Позиції UI елементів
+scoreLabel.pos = "20,20"
+scoreLabel.fontsize = "16"
+
+powerLabel.pos = "20,50"  
+powerLabel.fontsize = "14"
+
+levelLabel.pos = "20,80"
+levelLabel.fontsize = "14"
+
+mainBtn.pos = "120,120"
+mainBtn.size = "160,80"
+mainBtn.fontsize = "18"
+
+// Ряд 1 покращень
+upgradeBtn.pos = "20,220"
+upgradeBtn.size = "90,40"
+upgradeBtn.fontsize = "10"
+
+megaBtn.pos = "120,220"
+megaBtn.size = "90,40"
+megaBtn.fontsize = "10"
+
+autoBtn.pos = "220,220"
+autoBtn.size = "90,40"
+autoBtn.fontsize = "10"
+
+multiplierBtn.pos = "320,220"
+multiplierBtn.size = "90,40"
+multiplierBtn.fontsize = "10"
+
+// Ряд 2 кнопок
+achieveBtn.pos = "20,270"
+achieveBtn.size = "90,40"
+achieveBtn.fontsize = "9"
+
+prestigeBtn.pos = "120,270"
+prestigeBtn.size = "90,40"
+prestigeBtn.fontsize = "9"
+
+statsBtn.pos = "220,270"
+statsBtn.size = "90,40"
+statsBtn.fontsize = "9"
+
+resetBtn.pos = "320,270"
+resetBtn.size = "90,40"
+resetBtn.fontsize = "9"
+
+// Статус внизу
+statusLabel.pos = "20,330"
+statusLabel.fontsize = "12"
+
+autoLabel.pos = "20,360"
+autoLabel.fontsize = "11"
+
+multiLabel.pos = "20,390"
+multiLabel.fontsize = "11"
+
+// Ігрові змінні
+local score = 0
+local clickPower = 1
+local playerLevel = 1
+local totalClicks = 0
+local autoClicks = 0
+local multiplier = 1
+local prestigePoints = 0
+
+// Ціни покращень
+local powerCost = 10
+local megaCost = 100
+local autoCost = 500
+local multiCost = 1000
+
+// Досягнення
+local achieve1 = 0
+local achieve2 = 0
+local achieve3 = 0
+
+// ГОЛОВНИЙ КЛІК
+mainBtn:OnClick [
+    local clickValue = clickPower * multiplier
+    score = score + clickValue
+    totalClicks = totalClicks + 1
+    
+    // Перевірка рівня
+    if score > @playerLevel * 100@ [
+        playerLevel = playerLevel + 1
+        levelLabel.text = "Level: " + playerLevel
+        statusLabel.text = "LEVEL UP! New level: " + playerLevel
+        pring "Level up! Now level " + playerLevel
+    ]
+    
+    scoreLabel.text = "Score: " + score
+    
+    // Зміна тексту кнопки залежно від очок
+    if score > 1000 [
+        mainBtn.text = "SUPER CLICK!"
+    ]
+    if score > 10000 [
+        mainBtn.text = "MEGA CLICK!"  
+    ]
+    if score > 50000 [
+        mainBtn.text = "ULTIMATE!"
+    ]
+    
+    pring "Clicked! Score: " + score + " (+"+clickValue+")"
+]
+
+// ПОКРАЩЕННЯ СИЛИ +1
+upgradeBtn:OnClick [
+    if score > powerCost [
+        score = score - powerCost
+        clickPower = clickPower + 1
+        powerCost = powerCost + 5
+        
+        scoreLabel.text = "Score: " + score
+        powerLabel.text = "Power: " + clickPower
+        upgradeBtn.text = "Power +" + powerCost
+        statusLabel.text = "Power increased to " + clickPower + "!"
+        
+        pring "Bought power upgrade! New power: " + clickPower
+    ]
+    else [
+        statusLabel.text = "Need " + powerCost + " points!"
+        pring "Not enough points for power upgrade"
+    ]
+]
+
+// МЕГА ПОКРАЩЕННЯ +10
+megaBtn:OnClick [
+    if score > megaCost [
+        score = score - megaCost
+        clickPower = clickPower + 10
+        megaCost = megaCost + 150
+        
+        scoreLabel.text = "Score: " + score
+        powerLabel.text = "Power: " + clickPower
+        megaBtn.text = "MEGA " + megaCost
+        statusLabel.text = "MEGA BOOST! Power +" + clickPower
+        
+        pring "MEGA upgrade! Power increased by 10!"
+    ]
+    else [
+        statusLabel.text = "Need " + megaCost + " for MEGA!"
+        pring "Not enough for MEGA upgrade"
+    ]
+]
+
+// АВТОКЛІКИ
+autoBtn:OnClick [
+    if score > autoCost [
+        score = score - autoCost
+        autoClicks = autoClicks + 1
+        autoCost = autoCost + 300
+        
+        scoreLabel.text = "Score: " + score
+        autoLabel.text = "AutoClicks: " + autoClicks
+        autoBtn.text = "Auto " + autoCost
+        statusLabel.text = "AutoClicker bought! Total: " + autoClicks
+        
+        pring "AutoClicker purchased! Now have " + autoClicks
+    ]
+    else [
+        statusLabel.text = "Need " + autoCost + " for AutoClicker!"
+        pring "Not enough for AutoClicker"
+    ]
+]
+
+// МНОЖНИК 2x
+multiplierBtn:OnClick [
+    if score > multiCost [
+        score = score - multiCost
+        multiplier = multiplier + 1
+        multiCost = multiCost + 500
+        
+        scoreLabel.text = "Score: " + score
+        multiLabel.text = "Multiplier: x" + multiplier
+        multiplierBtn.text = "Multi " + multiCost
+        statusLabel.text = "Multiplier increased to x" + multiplier + "!"
+        
+        pring "Multiplier upgraded! Now x" + multiplier
+    ]
+    else [
+        statusLabel.text = "Need " + multiCost + " for multiplier!"
+        pring "Not enough for multiplier upgrade"
+    ]
+]
+
+// ПЕРЕВІРКА ДОСЯГНЕНЬ
+achieveBtn:OnClick [
+    local newAchieve = 0
+    
+    // Досягнення 1: 100 кліків
+    if totalClicks > 100 [
+        if achieve1 == 0 [
+            achieve1 = 1
+            newAchieve = 1
+            score = score + 500
+            statusLabel.text = "ACHIEVEMENT: 100 Clicks! +500 bonus!"
+            pring "Achievement unlocked: Clicker Novice! +500 points"
+        ]
+    ]
+    
+    // Досягнення 2: 10000 очок
+    if score > 10000 [
+        if achieve2 == 0 [
+            achieve2 = 1
+            newAchieve = 1
+            clickPower = clickPower + 5
+            statusLabel.text = "ACHIEVEMENT: 10K Points! +5 power!"
+            pring "Achievement unlocked: Point Master! +5 power"
+        ]
+    ]
+    
+    // Досягнення 3: рівень 10
+    if playerLevel > 10 [
+        if achieve3 == 0 [
+            achieve3 = 1
+            newAchieve = 1
+            multiplier = multiplier + 2
+            statusLabel.text = "ACHIEVEMENT: Level 10! +2 multiplier!"
+            pring "Achievement unlocked: Level Master! +2x multiplier"
+        ]
+    ]
+    
+    if newAchieve == 0 [
+        local totalAch = achieve1 + achieve2 + achieve3
+        statusLabel.text = "Achievements: " + totalAch + "/3 unlocked"
+        pring "Current achievements: " + totalAch + " out of 3"
+    ]
+    
+    scoreLabel.text = "Score: " + score
+    powerLabel.text = "Power: " + clickPower
+    multiLabel.text = "Multiplier: x" + multiplier
+]
+
+// ПРЕСТИЖ (скидання з бонусами)
+prestigeBtn:OnClick [
+    if score > 100000 [
+        prestigePoints = prestigePoints + 1
+        
+        // Скидаємо все крім престиж-очок
+        score = prestigePoints * 1000
+        clickPower = 1 + prestigePoints
+        multiplier = 1 + prestigePoints
+        playerLevel = 1
+        totalClicks = 0
+        autoClicks = 0
+        
+        // Скидаємо ціни
+        powerCost = 10
+        megaCost = 100
+        autoCost = 500
+        multiCost = 1000
+        
+        statusLabel.text = "PRESTIGE! Bonus from " + prestigePoints + " prestige points!"
+        scoreLabel.text = "Score: " + score
+        powerLabel.text = "Power: " + clickPower
+        multiLabel.text = "Multiplier: x" + multiplier
+        levelLabel.text = "Level: " + playerLevel
+        
+        pring "PRESTIGED! Now have " + prestigePoints + " prestige points"
+        pring "Starting bonuses applied!"
+    ]
+    else [
+        statusLabel.text = "Need 100,000 points for PRESTIGE!"
+        pring "Need 100K points to prestige"
+    ]
+]
+
+// СТАТИСТИКА
+statsBtn:OnClick [
+    statusLabel.text = "Check console for full stats!"
+    pring "=== PLAYER STATISTICS ==="
+    pring "Total Score: " + score
+    pring "Click Power: " + clickPower  
+    pring "Current Level: " + playerLevel
+    pring "Total Clicks: " + totalClicks
+    pring "AutoClickers: " + autoClicks
+    pring "Multiplier: x" + multiplier
+    pring "Prestige Points: " + prestigePoints
+    local totalAch = achieve1 + achieve2 + achieve3
+    pring "Achievements: " + totalAch + "/3"
+    pring "========================="
+]
+
+// ПОВНЕ СКИДАННЯ
+resetBtn:OnClick [
+    score = 0
+    clickPower = 1
+    playerLevel = 1
+    totalClicks = 0
+    autoClicks = 0
+    multiplier = 1
+    prestigePoints = 0
+    achieve1 = 0
+    achieve2 = 0
+    achieve3 = 0
+    
+    powerCost = 10
+    megaCost = 100
+    autoCost = 500
+    multiCost = 1000
+    
+    // Оновлюємо всі лейбли
+    scoreLabel.text = "Score: 0"
+    powerLabel.text = "Power: 1"
+    levelLabel.text = "Level: 1"
+    autoLabel.text = "AutoClicks: 0"
+    multiLabel.text = "Multiplier: x1"
+    statusLabel.text = "Game completely reset!"
+    mainBtn.text = "CLICK ME!"
+    
+    upgradeBtn.text = "Power +1"
+    megaBtn.text = "MEGA +10"
+    autoBtn.text = "AutoClicker"
+    multiplierBtn.text = "2x Multiplier"
+    
+    pring "Complete game reset!"
+]
+
+// Початкові налаштування
+upgradeBtn.text = "Power +" + powerCost
+megaBtn.text = "MEGA " + megaCost  
+autoBtn.text = "Auto " + autoCost
+multiplierBtn.text = "Multi " + multiCost
+
+pring "🎮 ZABA+ CLICKER ULTIMATE launched!"
+pring "💡 New features:"
+pring "   - Level system"
+pring "   - AutoClickers for passive income"
+pring "   - Multipliers for bigger gains"  
+pring "   - Achievement system with rewards"
+pring "   - Prestige system for long-term progression"
+pring "   - Detailed statistics"
+pring "💡 Click the big button to start earning!"
+pring "💡 Buy upgrades to increase your power"
+pring "💡 Check achievements for bonus rewards"
+pring "💡 Prestige at 100K for permanent bonuses!"
