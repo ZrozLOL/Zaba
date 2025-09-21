@@ -2,7 +2,7 @@
 # Zaba+
 A new programming language!
 
-Hello, you using **zaba+**, you need to know command meaning.
+Hello, you using **zaba+**, you need to know command meaning.(THIS IS ALL COMANDS!)
 
 - `pring "Hello frog!"` OR `2*56` — text or number that is output to the console  
 - `local Name = "Zabka"` — declared only in this function  
