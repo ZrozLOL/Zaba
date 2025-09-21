@@ -11,11 +11,19 @@ Hello, you using **zaba+**, you need to know command meaning.(THIS IS ALL COMAND
 - `else [pring "Frog"]` — the usual else  
 
 ### Imports
-- `import window` — importing something (for example: *window*)  
+  ### window import
+- `import window` — importing something like window, zabgame
   - `:CreateNewForm("My game")` — creating new form (you can set it)  
   - `:CreateButton("Click!")` — creating new button  
   - `:OnClick [pring "Clicked!"]` — click event  
-  - `:CreateLabel("Score: 0")` — creating new label  
+  - `:CreateLabel("Score: 0")` — creating new label
+  ### zabgame import
+  - `:CreatePlayer("Zaba")` — creating player
+  - `:CreateEnemy("250","250")` — creating enemy
+  - `:CreatePart("Part")` — creating part
+  - `ArrowLeft:OnKey [pring "Zaba " + "Good!"]` — Key function
+  - `move name left "10"` — move something
+  - `bullet.Color = fromRGB(250,250,100)` — color change
 
 ### Loops & Waiting
 - `while score [pring "Hi"]` — the usual while  
