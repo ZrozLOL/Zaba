@@ -1,0 +1,368 @@
+import window
+
+// === ЗМІННІ ===
+local currentInput = 0    
+local storedValue = 0     
+local operation = ""      
+local clearNext = 0       
+
+// === Створення Вікна ===
+local form = window:CreateNewForm("Zaba+ Calculator")
+form.bg = "#2c3e50"
+form.size = "400,650"
+
+// === ДИСПЛЕЙ ===
+local lblDisplay = window:CreateLabel("0")
+lblDisplay.pos = "20,20"
+lblDisplay.size = "360,100"
+lblDisplay.bg = "#34495e"
+lblDisplay.textcolor = "#ecf0f1"
+lblDisplay.fontsize = "36"
+
+local lblHistory = window:CreateLabel("")
+lblHistory.pos = "20,130"
+lblHistory.size = "360,30"
+lblHistory.textcolor = "#95a5a6"
+lblHistory.fontsize = "12"
+lblHistory.textbg = "Transparent"
+
+// === РОЗМІРИ КНОПОК ===
+local btnWidth = 85
+local btnHeight = 85
+
+// ------------------------------------------------------------------
+// --- ЦИФРИ (1-9) ---
+// ------------------------------------------------------------------
+
+local btn7 = window:CreateButton("7")
+btn7.pos = "20,180"
+btn7.size = btnWidth + "," + btnHeight
+btn7.bg = "#7f8c8d"
+btn7.fontsize = "24"
+btn7:OnClick [
+    local digit = 7
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+local btn8 = window:CreateButton("8")
+btn8.pos = "115,180"
+btn8.size = btnWidth + "," + btnHeight
+btn8.bg = "#7f8c8d"
+btn8.fontsize = "24"
+btn8:OnClick [
+    local digit = 8
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+local btn9 = window:CreateButton("9")
+btn9.pos = "210,180"
+btn9.size = btnWidth + "," + btnHeight
+btn9.bg = "#7f8c8d"
+btn9.fontsize = "24"
+btn9:OnClick [
+    local digit = 9
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+local btn4 = window:CreateButton("4")
+btn4.pos = "20,275"
+btn4.size = btnWidth + "," + btnHeight
+btn4.bg = "#7f8c8d"
+btn4.fontsize = "24"
+btn4:OnClick [
+    local digit = 4
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+local btn5 = window:CreateButton("5")
+btn5.pos = "115,275"
+btn5.size = btnWidth + "," + btnHeight
+btn5.bg = "#7f8c8d"
+btn5.fontsize = "24"
+btn5:OnClick [
+    local digit = 5
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+local btn6 = window:CreateButton("6")
+btn6.pos = "210,275"
+btn6.size = btnWidth + "," + btnHeight
+btn6.bg = "#7f8c8d"
+btn6.fontsize = "24"
+btn6:OnClick [
+    local digit = 6
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+local btn1 = window:CreateButton("1")
+btn1.pos = "20,370"
+btn1.size = btnWidth + "," + btnHeight
+btn1.bg = "#7f8c8d"
+btn1.fontsize = "24"
+btn1:OnClick [
+    local digit = 1
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+local btn2 = window:CreateButton("2")
+btn2.pos = "115,370"
+btn2.size = btnWidth + "," + btnHeight
+btn2.bg = "#7f8c8d"
+btn2.fontsize = "24"
+btn2:OnClick [
+    local digit = 2
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+local btn3 = window:CreateButton("3")
+btn3.pos = "210,370"
+btn3.size = btnWidth + "," + btnHeight
+btn3.bg = "#7f8c8d"
+btn3.fontsize = "24"
+btn3:OnClick [
+    local digit = 3
+    if clearNext == 1 [
+        currentInput = digit
+        clearNext = 0
+    ] else [
+        if currentInput == 0 [
+            currentInput = digit
+        ] else [
+            currentInput = currentInput * 10 + digit
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+// === ЦИФРА 0 ===
+local btn0 = window:CreateButton("0")
+btn0.pos = "20,465"
+btn0.size = "180,85"
+btn0.bg = "#7f8c8d"
+btn0.fontsize = "24"
+btn0:OnClick [
+    if clearNext == 1 [
+        currentInput = 0
+        clearNext = 0
+    ] else [
+        if currentInput != 0 [
+            currentInput = currentInput * 10
+        ]
+    ]
+    lblDisplay.text = currentInput
+]
+
+// ------------------------------------------------------------------
+// --- ОПЕРАЦІЇ ---
+// ------------------------------------------------------------------
+
+local btnAdd = window:CreateButton("+")
+btnAdd.pos = "305,180"
+btnAdd.size = "75,85"
+btnAdd.bg = "#e67e22"
+btnAdd.fontsize = "28"
+btnAdd:OnClick [
+    if operation == "" [ // Тільки якщо операція не встановлена
+        storedValue = currentInput
+        operation = "+"
+        lblHistory.text = storedValue + " +"
+        clearNext = 1
+        pring storedValue + " +"
+    ]
+]
+
+local btnSub = window:CreateButton("-")
+btnSub.pos = "305,275"
+btnSub.size = "75,85"
+btnSub.bg = "#e67e22"
+btnSub.fontsize = "28"
+btnSub:OnClick [
+    if operation == "" [
+        storedValue = currentInput
+        operation = "-"
+        lblHistory.text = storedValue + " -"
+        clearNext = 1
+        pring storedValue + " -"
+    ]
+]
+
+local btnMul = window:CreateButton("×")
+btnMul.pos = "305,370"
+btnMul.size = "75,85"
+btnMul.bg = "#e67e22"
+btnMul.fontsize = "28"
+btnMul:OnClick [
+    if operation == "" [
+        storedValue = currentInput
+        operation = "*"
+        lblHistory.text = storedValue + " ×"
+        clearNext = 1
+        pring storedValue + " x"
+    ]
+]
+
+local btnDiv = window:CreateButton("÷")
+btnDiv.pos = "305,465"
+btnDiv.size = "75,85"
+btnDiv.bg = "#e67e22"
+btnDiv.fontsize = "28"
+btnDiv:OnClick [
+    if operation == "" [
+        storedValue = currentInput
+        operation = "/"
+        lblHistory.text = storedValue + " ÷"
+        clearNext = 1
+        pring storedValue + " /"
+    ]
+]
+
+// ------------------------------------------------------------------
+// --- КЕРУВАННЯ ТА ОБЧИСЛЕННЯ ---
+// ------------------------------------------------------------------
+
+local btnEquals = window:CreateButton("=")
+btnEquals.pos = "210,465"
+btnEquals.size = "85,85"
+btnEquals.bg = "#27ae60"
+btnEquals.fontsize = "28"
+btnEquals:OnClick [
+    local num2 = currentInput
+    local result = 0
+    
+    // Перевіряємо, чи була встановлена операція
+    if operation != "" [
+        
+        // 1. Виконання обчислення
+        if operation == "+" [
+            result = storedValue + num2
+        ]
+        if operation == "-" [
+            result = storedValue - num2
+        ]
+        if operation == "*" [
+            result = storedValue * num2
+        ]
+        if operation == "/" [
+            if num2 == 0 [
+                lblDisplay.text = "ERROR"
+                lblHistory.text = "Division by 0"
+                pring "Error: Division by 0"
+            ]
+            else [
+                result = storedValue / num2
+            ]
+        ]
+        
+        // 2. Відображення та оновлення стану
+        if lblDisplay.text != "ERROR" [
+            lblDisplay.text = result
+            lblHistory.text = storedValue + " " + operation + " " + num2 + " ="
+            currentInput = result
+            pring storedValue + " " + operation + " " + num2 + " = " + result
+            
+            // Скидання стану після успішного обчислення
+            storedValue = 0
+            operation = ""
+            clearNext = 1 
+        ]
+    ]
+    // Якщо operation == "", просто нічого не робимо, це очікувана поведінка.
+]
+
+local btnClear = window:CreateButton("C")
+btnClear.pos = "20,560"
+btnClear.size = "360,50"
+btnClear.bg = "#c0392b"
+btnClear.fontsize = "20"
+btnClear:OnClick [
+    currentInput = 0
+    storedValue = 0
+    operation = ""
+    clearNext = 0
+    lblDisplay.text = "0"
+    lblHistory.text = ""
+    pring "Cleared"
+]
+
+pring "=== ZABA+ CALCULATOR ==="
+pring "Ready to calculate!"
