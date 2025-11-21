@@ -1,791 +1,554 @@
-# Zaba+ Programming Language - Complete Documentation v2.0
+# Zaba+ Programming Language 🐸
 
-**Zaba+** is a simple, beginner-friendly programming language with syntax optimized for creating GUI applications and games.
+**Version:** Beta 1.9
 
----
+A simple, beginner-friendly programming language designed for creating interactive applications, games, and GUI programs with minimal syntax complexity. Features a custom IDE for writing and running Zaba+ code.
 
-## 📌 Basic Syntax
+## 🎯 Overview
 
-### Output to Console
-```zaba
-pring "Hello frog!"
-pring 2 * 56
-pring x + y
-```
-- Outputs text or expressions to console
-- Supports strings, numbers, and arithmetic
-- Automatically adds newline after each output
+Zaba+ is an interpreted programming language built in C# that focuses on simplicity and ease of learning. It provides built-in modules for creating windows, graphics, games, and handling multimedia, making it perfect for educational purposes, game development, and rapid prototyping.
 
-### Variables
-```zaba
-local score = 0        // Local variable (function scope)
-let name = "Zabka"     // Global variable
-score = score + 10     // Assignment (updates existing variable)
-```
+## 🖥️ IDE
 
-**Variable Rules:**
-- `local` creates a new variable in current scope
-- `let` creates a global variable
-- Variable names must start with a letter
-- Can contain letters and numbers (e.g., `score1`, `playerX`)
+Zaba+ comes with its own integrated development environment featuring:
+- **Syntax Highlighting** - Color-coded keywords and syntax
+- **Real-time Console** - See output as your program runs
+- **Project System** - Organize your code files
+- **Built-in Runner** - Execute code with one click
+
+## ✨ Key Features
+
+- **Simple Syntax** - Easy-to-understand code structure designed for beginners
+- **GUI Module** - Built-in window creation and UI components
+- **Game Development** - Complete game engine with physics and collision detection
+- **Graphics System** - Shape rendering with textures and colors
+- **Multimedia Support** - Audio playback with looping
+- **Event-Driven** - Responsive event handling system
+- **Real-time Execution** - Live updates and animations
+
+## 📚 Language Syntax
 
 ### Comments
 ```zaba
-// This is a single-line comment
-pring "Hello"  // Comment after code
+// Single-line comment
+// Everything after // is ignored
 ```
 
----
-
-## 🔢 Data Types
-
-### Numbers
+### Variables
 ```zaba
-let age = 25
-local count = 0
+let score = 0           // Global variable
+local name = "Player"   // Local scope variable
 ```
 
-### Strings
+### Output
 ```zaba
-let name = "Zabka"
-let message = "Score: "
-pring "Hello, " + name  // Concatenation
+pring "Hello World"     // Print to console
+pring score             // Print variable value
+pring "Score: " + score // Concatenation
 ```
 
-### Boolean Values
-```zaba
-let isReady = true
-let isGameOver = false
-```
+### Control Flow
 
----
-
-## 📐 Operators
-
-### Arithmetic Operators
-```zaba
-pring 10 + 5      // 15 (addition)
-pring 10 - 5      // 5 (subtraction)
-pring 10 * 5      // 50 (multiplication)
-pring 10 / 5      // 2 (division)
-```
-
-### Comparison Operators
-```zaba
-pring 10 > 5      // 1 (true)
-pring 10 < 5      // 0 (false)
-pring 10 == 10    // 1 (equal)
-pring 10 != 5     // 1 (not equal)
-pring 10 >= 10    // 1 (greater or equal)
-pring 5 <= 10     // 1 (less or equal)
-```
-
-**Note:** In Zaba+, `1` = true, `0` = false
-
-### Grouping with `@...@`
-```zaba
-pring @10 + 5@ * 2      // Result: 30
-pring 10 + 5 * 2        // Result: 20
-```
-
----
-
-## 🔀 Control Flow
-
-### Conditionals
+**If Statement:**
 ```zaba
 if score > 100 [
-    pring "You won!"
-]
-
-if score > 100 [
-    pring "You won!"
+    pring "You win!"
 ] else [
     pring "Keep trying"
 ]
 ```
 
-### Loops
+**While Loop:**
 ```zaba
-while score < 100 [
-    score = score + 1
-    pring score
+let counter = 0
+while counter < 10 [
+    pring counter
+    counter = counter + 1
 ]
 ```
 
----
+### Operators
 
-## ⏱️ Timing & Control
+**Arithmetic:**
+- `+` Addition
+- `-` Subtraction
+- `*` Multiplication
+- `/` Division
 
-### Waiting
+**Comparison:**
+- `==` Equal to
+- `!=` Not equal to
+- `>` Greater than
+- `<` Less than
+- `>=` Greater or equal
+- `<=` Less or equal
+
+**Grouping:**
 ```zaba
-pring "Starting..."
-waiting(3)              // Wait 3 seconds
-pring "Done!"
+let result = @ 5 + 3 @ * 2  // @ @ for grouping expressions
 ```
 
-### Timers (Tick)
+### Timers
 ```zaba
-tick(1000) [            // Execute every 1000ms
-    pring "Tick!"
+tick(1000) [
+    pring "This runs every second"
 ]
+
+waiting(3)  // Pause for 3 seconds
 ```
 
 ### Program Control
 ```zaba
-stop:Program        // Stop execution
-clear:Console       // Clear console output
+stop:Program  // Stop execution
+clear:Console // Clear console output
 ```
 
----
+## 📦 Module: `window` - GUI Creation
 
-## 🖼️ GUI Module (`window`)
-
-### Import and Setup
+### Import
 ```zaba
 import window
-
-local myForm = window:CreateNewForm("My Application")
 ```
 
-### Creating Controls
-
-#### Forms
+### Creating Windows
 ```zaba
-local form1 = window:CreateNewForm("Main Window")
+local form = window:CreateNewForm("My Application")
 ```
 
-#### Buttons
+### Creating Buttons
 ```zaba
-local btn1 = window:CreateButton("Click me!")
+local button = window:CreateButton("Click Me!")
 ```
 
-#### Labels
+### Creating Labels
 ```zaba
-local lbl1 = window:CreateLabel("Score: 0")
+local label = window:CreateLabel("Score: 0")
 ```
 
----
-
-## 🎨 Control Properties
-
-### Position (`pos`)
+### Window Properties
 ```zaba
-btn.pos = "100,50"       // x=100, y=50
+form.size = "800,600"        // Width, Height
+form.bg = "lightblue"        // Background color
+form.background = "#FF5733"  // Hex color
+form.text = "New Title"      // Window title
 ```
 
-### Size (`size`)
+### Button Properties
 ```zaba
-btn.size = "120,40"      // width=120, height=40
+button.pos = "100,50"        // X, Y position
+button.size = "150,40"       // Width, Height
+button.text = "Start Game"   // Button text
+button.textcolor = "white"   // Text color
+button.bg = "green"          // Background color
+button.font = "Arial"        // Font family
+button.fontsize = "14"       // Font size
 ```
 
-### Text (`text`)
+### Label Properties
 ```zaba
-btn.text = "Start Game"
-lbl.text = "Score: " + score
+label.pos = "20,20"
+label.text = "Score: 100"
+label.textcolor = "black"
+label.textbg = "transparent" // Background (transparent or color)
+label.font = "Courier New"
+label.fontsize = "16"
 ```
 
-### Background Color (`bg`)
+### Event Handling
 ```zaba
-myForm.bg = "lightblue"
-myForm.bg = "#FF5733"    // Hex color
-```
-
-### Font Properties
-```zaba
-btn.font = "Arial"
-lbl.fontsize = "14"
-```
-
-### Text Styling (NEW!)
-```zaba
-// Text color
-lbl.textcolor = "red"
-lbl.textcolor = "#FF5733"
-lbl.textcolor = "Transparent"  // Invisible text
-
-// Text background
-lbl.textbg = "yellow"
-lbl.textbg = "#FFFF00"
-lbl.textbg = "Transparent"     // Transparent background
-```
-
----
-
-## 🎯 Events
-
-### Button Click Events
-```zaba
-btn:OnClick [
-    score = score + 1
-    pring "Clicked!"
+button:OnClick [
+    label.text = "Button was clicked!"
+    pring "Click event fired"
 ]
 ```
 
-### Keyboard Events
+### Removing Objects
 ```zaba
-onkey("W") [
-    pring "W pressed"
+button:Remove  // Remove from window
+```
+
+## 🎮 Module: `zabgame` - Game Development
+
+### Import
+```zaba
+import zabgame
+```
+
+### Creating Player
+```zaba
+zabgame:CreatePlayer("player", "player.png", 50, 50)
+// Parameters: name, texture_file, width, height
+```
+
+### Creating Enemies
+```zaba
+zabgame:CreateEnemy("enemy", "enemy.png", 40, 40)
+```
+
+### Creating Platforms
+```zaba
+zabgame:CreatePlatform("ground", 0, 400, 800, 50)
+// Parameters: name, x, y, width, height
+```
+
+### Movement Controls
+```zaba
+zabgame:EnableMovement("player", "arrows")  // Arrow keys
+zabgame:EnableMovement("player", "wasd")    // WASD keys
+```
+
+### Physics
+```zaba
+zabgame:EnableGravity("player")  // Apply gravity to object
+```
+
+### Game Object Properties
+```zaba
+player.speed = 7        // Movement speed
+player.health = 100     // Health points
+player.pos = "100,200"  // Position
+```
+
+### Collision Detection
+```zaba
+zabgame:OnCollision("player", "enemy") [
+    player.health = player.health - 10
+    pring "Hit! Health: " + player.health
+    
+    if player.health <= 0 [
+        pring "Game Over!"
+        stop:Program
+    ]
 ]
-
-onkey("Space") [
-    pring "Space pressed"
-]
 ```
 
-**Available Keys:** A-Z, Space, Enter, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, F1-F12
+## 🎨 Module: `texturemodule` - Graphics & Textures
 
----
-
-## 🎨 Graphics Module (`part`)
-
-### Creating Shapes
-```zaba
-import window
-
-local myForm = window:CreateNewForm("Shapes Demo")
-
-part circle1 = shape("circle", "red", 100, 100)
-part rect1 = shape("rectangle", "blue", 150, 80)
-part tri1 = shape("triangle", "#00FF00", 120, 120)
-```
-
-**Supported Shapes:**
-- `"circle"` — круг
-- `"rectangle"` — прямокутник
-- `"triangle"` — трикутник
-
-### Shape Properties
-
-```zaba
-circle1.pos = "200,150"
-circle1.size = "150,150"
-circle1.color = "yellow"
-```
-
-### Removing Shapes
-```zaba
-circle1:Remove
-```
-
----
-
-## 🎨 Texture Module (`texturemodule`) - NEW!
-
-### Import Module
+### Import
 ```zaba
 import texturemodule
 ```
 
 ### Loading Textures
 ```zaba
-// Load texture from project folder
-local playerTex = texturemodule.Texture("player.png")
-local bgTex = texturemodule.Texture("background.jpg")
+local playerTexture = texturemodule.Texture("sprite.png")
 ```
 
-**Supported Formats:** `.png`, `.jpg`, `.jpeg`, `.bmp`
-
-### Applying Textures to Shapes
+### Creating Shapes
 ```zaba
-part player = shape("rectangle", "white", 80, 80)
-player.pos = "100,100"
-
-// Apply texture
-player:SetTexture(playerTex)
+part circle = shape("circle", "red", 100, 100)
+part box = shape("rectangle", "blue", 150, 80)
+part triangle = shape("triangle", "#00FF00", 120, 120)
+// Parameters: shape_type, color, width, height
 ```
 
-### Texture Properties
+### Shape Properties
 ```zaba
-// Size (optional - for reference only)
-playerTex.size = "80,80"
-
-// Position (optional - for reference only)
-playerTex.pos = "100,100"
+circle.pos = "200,100"    // Position
+circle.size = "150,150"   // Size
+circle.color = "yellow"   // Color change
 ```
 
-**Note:** Texture automatically stretches to fill the shape
-
-### Removing Textures
+### Applying Textures
 ```zaba
-player:RemoveTexture()  // Remove texture, show shape color
+circle:SetTexture(playerTexture)  // Apply texture to shape
+circle:RemoveTexture              // Remove texture (show color)
 ```
 
-### Complete Texture Example
-```zaba
-import window
-import texturemodule
+## 🔊 Module: `soundservice` - Audio
 
-local form = window:CreateNewForm("Texture Demo")
-
-// Create shape
-part sprite = shape("rectangle", "white", 64, 64)
-sprite.pos = "200,200"
-
-// Load and apply texture
-local tex = texturemodule.Texture("sprite.png")
-sprite:SetTexture(tex)
-
-// Change texture on click
-local btn = window:CreateButton("Change")
-btn:OnClick [
-    local newTex = texturemodule.Texture("sprite2.png")
-    sprite:SetTexture(newTex)
-]
-```
-
----
-
-## 🔊 Sound Module (`soundservice`) - NEW!
-
-### Import Module
+### Import
 ```zaba
 import soundservice
 ```
 
 ### Loading Sounds
 ```zaba
-// Load sound from project folder
-local bgMusic = soundservice.Sound("music.wav")
-local jumpSound = soundservice.Sound("jump.wav")
-```
-
-**Supported Formats:** `.wav` (recommended), `.mp3`
-
-### Playing Sounds
-```zaba
-// Play once
-jumpSound:StartPlay()
-
-// Stop sound
-bgMusic:StopPlay()
+local bgMusic = soundservice.Sound("background.wav")
+local clickSound = soundservice.Sound("click.wav")
 ```
 
 ### Sound Properties
-
-#### Loop
 ```zaba
-// Enable looping
-bgMusic.loop = true
-bgMusic:StartPlay()  // Will play forever
-
-// Disable looping
-bgMusic.loop = false
+bgMusic.loop = true   // Enable looping
+bgMusic.volume = 80   // Volume level
 ```
 
-#### Volume
+### Playback Control
 ```zaba
-// Set volume (0-100)
-bgMusic.volume = "50"
-jumpSound.volume = "80"
+bgMusic:StartPlay()   // Start playing
+bgMusic:StopPlay()    // Stop playing
 ```
 
-**Note:** Volume control has limited support with current audio system
+## ⌨️ Keyboard Events
 
-### Complete Sound Example
 ```zaba
-import window
-import soundservice
-
-local form = window:CreateNewForm("Sound Demo")
-
-// Load sounds
-local music = soundservice.Sound("background.wav")
-local click = soundservice.Sound("click.wav")
-
-// Setup background music
-music.loop = true
-music.volume = "30"
-music:StartPlay()
-
-// Button with click sound
-local btn = window:CreateButton("Click Me")
-btn:OnClick [
-    click:StartPlay()
+onkey("Space") [
+    pring "Space pressed!"
 ]
 
-// Stop music button
-local btnStop = window:CreateButton("Stop Music")
-btnStop:OnClick [
-    music:StopPlay()
+onkey("W") [
+    player.pos = player.pos + ",5"
+]
+
+onkey("Escape") [
+    stop:Program
 ]
 ```
 
----
-
-## 📁 Project System
-
-### Project Structure
-
-All files are in ONE folder (no subfolders):
-
-```
-ZabaPlus.exe
-Projects/
-├── MyGame/
-│   ├── MyGame.zab+
-│   ├── player.png
-│   ├── enemy.png
-│   ├── music.wav
-│   └── jump.wav
-└── Calculator/
-    └── Calculator.zab+
-```
-
-### Creating Projects
-
-1. Click **File → Save**
-2. Enter project name (e.g., "MyGame")
-3. Folder `Projects/MyGame/` is created automatically
-4. File saved as `MyGame.zab+` inside
-
-### Adding Assets
-
-Simply copy texture and sound files into your project folder:
-- Textures: `player.png`, `background.jpg`, etc.
-- Sounds: `music.wav`, `jump.wav`, etc.
-
-### Loading Projects
-
-1. Click **File → Load**
-2. Navigate to `Projects/YourProject/`
-3. Select `.zab+` file
-4. Project loads with access to all assets in that folder
-
----
+**Supported Keys:** `W`, `A`, `S`, `D`, `Space`, `Escape`, `Enter`, arrow keys, and more.
 
 ## 💡 Complete Examples
 
-### Example 1: Textured Game Character
-
+### 1. Clicker Game
 ```zaba
+// ZABA+ CLICKER GAME
 import window
+
+// Create UI
+local form = window:CreateNewForm("ZABA+ CLICKER PRO")
+local mainBtn = window:CreateButton("CLICK!")
+local scoreLabel = window:CreateLabel("Score: 0")
+local powerLabel = window:CreateLabel("Power: 1")
+local upgradeBtn = window:CreateButton("Upgrade +1")
+local megaBtn = window:CreateButton("MEGA +10")
+
+// Setup window
+form.size = "400,500"
+
+// Setup positions
+scoreLabel.pos = "20,20"
+scoreLabel.font = "Arial"
+scoreLabel.fontsize = "16"
+
+powerLabel.pos = "20,50"
+powerLabel.font = "Arial"
+powerLabel.fontsize = "14"
+
+mainBtn.pos = "100,100"
+mainBtn.size = "200,80"
+mainBtn.font = "Arial"
+mainBtn.fontsize = "18"
+
+upgradeBtn.pos = "50,250"
+upgradeBtn.size = "150,50"
+
+megaBtn.pos = "220,250"
+megaBtn.size = "150,50"
+
+// Game variables
+let score = 0
+let power = 1
+
+// Main click handler
+mainBtn:OnClick [
+    score = score + power
+    scoreLabel.text = "Score: " + score
+]
+
+// Upgrade handlers
+upgradeBtn:OnClick [
+    if score >= 10 [
+        score = score - 10
+        power = power + 1
+        scoreLabel.text = "Score: " + score
+        powerLabel.text = "Power: " + power
+    ]
+]
+
+megaBtn:OnClick [
+    if score >= 100 [
+        score = score - 100
+        power = power + 10
+        scoreLabel.text = "Score: " + score
+        powerLabel.text = "Power: " + power
+    ]
+]
+```
+
+### 2. Platform Game
+```zaba
+// PLATFORMER GAME
+import window
+import zabgame
 import texturemodule
 import soundservice
 
-local form = window:CreateNewForm("Character Demo")
-form.bg = "#87CEEB"
+// Create game window
+local form = window:CreateNewForm("Platform Adventure")
+form.size = "800,600"
+form.bg = "skyblue"
 
-// Create player with texture
-part player = shape("rectangle", "white", 64, 64)
-player.pos = "250,300"
-
+// Load assets
 local playerTex = texturemodule.Texture("player.png")
-player:SetTexture(playerTex)
-
-// Load jump sound
+local enemyTex = texturemodule.Texture("enemy.png")
 local jumpSound = soundservice.Sound("jump.wav")
 
-// Movement
-local playerX = 250
-local playerY = 300
+// Create game objects
+zabgame:CreatePlayer("hero", "player.png", 50, 50)
+zabgame:EnableMovement("hero", "arrows")
+zabgame:EnableGravity("hero")
 
-onkey("A") [
-    playerX = playerX - 10
-    player.pos = playerX + "," + playerY
-]
+zabgame:CreateEnemy("monster", "enemy.png", 40, 40)
+zabgame:CreatePlatform("ground", 0, 550, 800, 50)
+zabgame:CreatePlatform("platform1", 200, 400, 150, 20)
+zabgame:CreatePlatform("platform2", 500, 300, 150, 20)
 
-onkey("D") [
-    playerX = playerX + 10
-    player.pos = playerX + "," + playerY
-]
+// Set initial properties
+hero.speed = 5
+hero.health = 100
+monster.pos = "600,500"
 
+// Jump on space
 onkey("Space") [
     jumpSound:StartPlay()
-    playerY = playerY - 50
-    player.pos = playerX + "," + playerY
-    
-    waiting(1)
-    
-    playerY = playerY + 50
-    player.pos = playerX + "," + playerY
 ]
 
-pring "Use A/D to move, Space to jump!"
+// Collision handling
+zabgame:OnCollision("hero", "monster") [
+    hero.health = hero.health - 25
+    pring "Ouch! Health: " + hero.health
+    
+    if hero.health <= 0 [
+        pring "GAME OVER"
+        stop:Program
+    ]
+]
 ```
 
-### Example 2: Music Player
-
+### 3. Animation Demo
 ```zaba
-import window
-import soundservice
-
-local form = window:CreateNewForm("Music Player")
-form.bg = "#2c3e50"
-
-// Title
-local lblTitle = window:CreateLabel("MUSIC PLAYER")
-lblTitle.pos = "150,30"
-lblTitle.fontsize = "24"
-lblTitle.textcolor = "#ecf0f1"
-lblTitle.textbg = "Transparent"
-
-// Load music
-local music = soundservice.Sound("song.wav")
-music.volume = "50"
-
-// Play button
-local btnPlay = window:CreateButton("▶ Play")
-btnPlay.pos = "100,100"
-btnPlay.size = "100,40"
-btnPlay.bg = "#27ae60"
-
-btnPlay:OnClick [
-    music.loop = true
-    music:StartPlay()
-    pring "Music playing..."
-]
-
-// Stop button
-local btnStop = window:CreateButton("■ Stop")
-btnStop.pos = "220,100"
-btnStop.size = "100,40"
-btnStop.bg = "#e74c3c"
-
-btnStop:OnClick [
-    music:StopPlay()
-    pring "Music stopped"
-]
-
-// Status
-local lblStatus = window:CreateLabel("Ready")
-lblStatus.pos = "150,160"
-lblStatus.textcolor = "#95a5a6"
-lblStatus.textbg = "Transparent"
-```
-
-### Example 3: Horror Effect
-
-```zaba
+// ANIMATED SHAPES
 import window
 
-local form = window:CreateNewForm("Horror")
+local form = window:CreateNewForm("Animation")
+form.size = "600,400"
 form.bg = "black"
 
-// Hidden text
-local lblScary = window:CreateLabel("BOO!")
-lblScary.pos = "250,200"
-lblScary.fontsize = "48"
-lblScary.textcolor = "Transparent"
-lblScary.textbg = "Transparent"
+part ball = shape("circle", "yellow", 50, 50)
+ball.pos = "0,175"
 
-// Fade in effect
-local step = 0
+let x = 0
+let direction = 1
 
-tick(500) [
-    step = step + 1
+tick(16) [
+    x = x + @ direction * 3 @
     
-    if step == 1 [
-        lblScary.textcolor = "Transparent"
+    if x > 550 [
+        direction = -1
+        ball.color = "red"
     ]
     
-    if step == 2 [
-        lblScary.textcolor = "#330000"
+    if x < 0 [
+        direction = 1
+        ball.color = "yellow"
     ]
     
-    if step == 3 [
-        lblScary.textcolor = "#660000"
-    ]
-    
-    if step == 4 [
-        lblScary.textcolor = "#990000"
-    ]
-    
-    if step == 5 [
-        lblScary.textcolor = "red"
-    ]
-    
-    if step == 6 [
-        lblScary.textcolor = "Transparent"
-    ]
-    
-    if step == 7 [
-        lblScary.textcolor = "red"
-        step = 5
-    ]
+    ball.pos = x + ",175"
 ]
 ```
 
-### Example 4: Full Game Demo
+## 🏗️ Technical Architecture
 
-```zaba
-import window
-import texturemodule
-import soundservice
+### 1. **Lexer** (`Lexer.cs`)
+- Tokenizes source code into tokens
+- Tracks line and column numbers for error reporting
+- Recognizes keywords, operators, literals, and identifiers
+- Supports single-line comments (`//`)
 
-local form = window:CreateNewForm("Mini Game")
-form.bg = "#1a1a1a"
+### 2. **AST** (`AST.cs`)
+- Defines Abstract Syntax Tree node types
+- Statement nodes: `LetStmt`, `IfStmt`, `WhileStmt`, `TickStmt`, etc.
+- Expression nodes: `NumberExpr`, `StringExpr`, `BinaryExpr`, `VarExpr`
+- Game-specific nodes: `CreatePlayerStmt`, `OnCollisionStmt`, etc.
 
-// Background music
-local bgMusic = soundservice.Sound("music.wav")
-bgMusic.loop = true
-bgMusic.volume = "20"
-bgMusic:StartPlay()
+### 3. **Parser** (`Parser.cs`)
+- Recursive descent parser
+- Operator precedence handling
+- Module-specific syntax parsing
+- Property and method call parsing
+- Block structure with `[` `]`
 
-// Player
-part player = shape("circle", "white", 50, 50)
-player.pos = "100,300"
+### 4. **Interpreter** (`ZabkaInterpreter.cs`)
+- AST execution engine
+- Variable environment management
+- UI thread synchronization for GUI operations
+- Event system (clicks, keys, collisions, timers)
+- Resource management (textures, sounds, game objects)
+- Physics simulation for game objects
 
-local playerTex = texturemodule.Texture("player.png")
-player:SetTexture(playerTex)
+## 🚀 Getting Started
 
-// Coin
-part coin = shape("circle", "white", 30, 30)
-coin.pos = "400,300"
+1. **Download** the Zaba+ IDE from the [releases page](your-github-link)
+2. **Open** the IDE
+3. **Write** your code in the editor
+4. **Click** the run button (▶️) to execute
+5. **See** results in the console and GUI windows
 
-local coinTex = texturemodule.Texture("coin.png")
-coin:SetTexture(coinTex)
+## 📝 File Structure
 
-// Sounds
-local coinSound = soundservice.Sound("coin.wav")
-local winSound = soundservice.Sound("win.wav")
-
-// UI
-local lblScore = window:CreateLabel("Score: 0")
-lblScore.pos = "20,20"
-lblScore.fontsize = "18"
-lblScore.textcolor = "#FFD700"
-lblScore.textbg = "black"
-
-local score = 0
-
-// Movement
-local playerX = 100
-
-onkey("A") [
-    playerX = playerX - 15
-    player.pos = playerX + ",300"
-]
-
-onkey("D") [
-    playerX = playerX + 15
-    player.pos = playerX + ",300"
-]
-
-// Collect coin
-local btnCollect = window:CreateButton("Collect Coin")
-btnCollect.pos = "20,60"
-
-btnCollect:OnClick [
-    score = score + 1
-    lblScore.text = "Score: " + score
-    coinSound:StartPlay()
-    
-    if score == 10 [
-        bgMusic:StopPlay()
-        winSound:StartPlay()
-        lblScore.text = "YOU WIN!"
-        lblScore.textcolor = "red"
-    ]
-]
-
-pring "Game started! Collect 10 coins to win!"
+```
+YourProject/
+│
+├── main.zaba        # Your main code file
+├── player.png       # Texture files
+├── enemy.png
+├── background.wav   # Sound files
+└── click.wav
 ```
 
----
+## 🛠️ Current Status (Beta 1.9)
 
-## 🔍 Language Implementation
+**Working Features:**
+- ✅ Complete syntax highlighting
+- ✅ Variable declarations and assignments
+- ✅ Arithmetic and logical operations
+- ✅ Control flow (if/else, while loops)
+- ✅ GUI creation and management
+- ✅ Event handling (clicks, keyboard)
+- ✅ Game objects with physics
+- ✅ Collision detection system
+- ✅ Texture loading and rendering
+- ✅ Sound playback with looping
+- ✅ Timer-based execution
+- ✅ Shape rendering
 
-### AST (Abstract Syntax Tree)
+**Known Limitations:**
+- No custom functions/procedures yet
+- No arrays or complex data structures
+- Limited file I/O operations
+- No networking capabilities
+- Single-threaded execution
 
-**New Statement Types (v2.0):**
-- `LoadTextureStmt` — Texture loading
-- `SetTextureStmt` — Apply texture to shape
-- `RemoveTextureStmt` — Remove texture from shape
-- `LoadSoundStmt` — Sound loading
-- `PlaySoundStmt` — Play sound
-- `StopSoundStmt` — Stop sound
+## 🎯 Roadmap
 
-**New Expression Types (v2.0):**
-- `BoolExpr` — Boolean values (true/false)
+- [ ] User-defined functions
+- [ ] Arrays and lists
+- [ ] File reading/writing
+- [ ] More physics features (velocity, forces)
+- [ ] Particle systems
+- [ ] Animation system
+- [ ] Better error messages with stack traces
+- [ ] Debugger with breakpoints
+- [ ] Code completion in IDE
+- [ ] More built-in shapes and effects
 
-### Lexer Features
+## 🤝 Contributing
 
-**New Tokens (v2.0):**
-- `TRUE`, `FALSE` — Boolean literals
+Contributions are welcome! Feel free to:
+- Report bugs
+- Suggest features
+- Submit pull requests
+- Improve documentation
+- Share your Zaba+ projects
 
-### Parser Features
 
-**New Parsing (v2.0):**
-- Method calls with `.` operator (`texturemodule.Texture()`)
-- Texture/sound method parsing (`:SetTexture()`, `:StartPlay()`, `:StopPlay()`)
-- Boolean expression parsing
+## 🌟 Showcase
 
-### Interpreter Features
-
-**New Functionality (v2.0):**
-- Project path management (`SetProjectPath()`)
-- Texture dictionary and rendering
-- Sound player dictionary with loop support
-- Enhanced error handling (`StopProgramByError()`)
-- Texture application to `ShapePanel`
-- Sound loop implementation
-- Text color and background styling
-
----
-
-## 🔧 Best Practices
-
-1. **Always set project path when loading:**
-```csharp
-interp.SetProjectPath(projectFolder);
-```
-
-2. **Keep assets in project folder:** All `.png`, `.jpg`, `.wav` files together with `.zab+`
-
-3. **Use textures for better visuals:** Shapes with textures look more professional
-
-4. **Add sound effects:** Makes games feel more interactive
-
-5. **Loop background music:** Set `loop = true` for music
-
-6. **Use transparent text:** Great for fade-in/fade-out effects
+Share your Zaba+ creations! Tag them with `#ZabaPlus` or `#ZabaProgramming`
 
 ---
 
-## 🐛 Common Issues
+**Made with 🐸 and ❤️**
 
-**Problem:** `❌ Texture file not found`
-**Solution:** Make sure file is in project folder and name matches exactly
-
-**Problem:** `❌ Sound file not found`
-**Solution:** Check file name and format (`.wav` recommended)
-
-**Problem:** Sound doesn't loop
-**Solution:** Set `sound.loop = true` **before** calling `:StartPlay()`
-
-**Problem:** Text is invisible
-**Solution:** Check if `textcolor` is set to `"Transparent"`
-
----
-
-## 📚 Quick Reference
-
-### Modules
-- `window` — GUI controls
-- `texturemodule` — Image loading
-- `soundservice` — Audio playback
-
-### Texture Methods
-- `texturemodule.Texture("file.png")` — Load texture
-- `shape:SetTexture(texture)` — Apply texture
-- `shape:RemoveTexture()` — Remove texture
-
-### Sound Methods
-- `soundservice.Sound("file.wav")` — Load sound
-- `sound:StartPlay()` — Play sound
-- `sound:StopPlay()` — Stop sound
-- `sound.loop = true/false` — Enable/disable loop
-- `sound.volume = "0-100"` — Set volume
-
-### Text Styling
-- `label.textcolor` — Text color
-- `label.textbg` — Text background
-- Both support: named colors, hex colors, `"Transparent"`
-
----
-
-**Version:** 2.0  
-**New Features:** Projects, Textures, Sounds, Text Styling  
-**Last Updated:** November 2025  
-**Language Designer:** Zaba+ Team 🐸
+*Zaba+ - Programming made simple and fun!*
