@@ -6,7 +6,6 @@
         "version": "1.0.0",
         "description": "Advanced mathematical functions:\n• Trigonometry (sin, cos, tan)\n• Random numbers\n• Constants (pi, e)\n• Power and roots",
         "code": "// Math module implementation\nfunction pow(base, exp) [\n    let result = 1\n    let i = 0\n    while i < exp [\n        result = result * base\n        i = i + 1\n    ]\n    pring result\n]",
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/math/ZabaMathPlugin.dll"
     },
     {
         "name": "ui",
@@ -15,7 +14,6 @@
         "version": "2.1.0",
         "description": "Modern UI components:\n• Stylish buttons\n• Input validation\n• Modal dialogs\n• Notifications",
         "code": "// UI module\nfunction showNotification(text) [\n    local notif = window:CreateLabel(text)\n    notif.bg = \"#2196F3\"\n    notif.textcolor = \"white\"\n    notif.size = \"300,50\"\n]",
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/ui/ZabaUIPlugin.dll"
     },
     {
         "name": "network",
@@ -24,7 +22,6 @@
         "version": "0.5.0",
         "description": "Network utilities:\n• HTTP requests\n• JSON parsing\n• WebSocket support\n• REST API helpers",
         "code": "// Network module placeholder",
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/network/ZabaNetworkPlugin.dll"
     },
     {
         "name": "web",
