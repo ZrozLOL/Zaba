@@ -5,7 +5,7 @@
         "author": "ZrozLOL",
         "version": "1.0.0",
         "description": "HTTP requests for Zaba+\n\n✨ Features:\n• GET/POST requests\n• JSON parsing\n• File downloads\n• Website ping\n\n📚 Usage:\nimport web\nweb:Get(\"https://api.example.com\")\nweb:Post(\"url\", data)\nweb:Download(\"url\", \"file.txt\")\nweb:Ping(\"https://google.com\")",
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/web-v1.0.0/ZabaWebPlugin.dll",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/web/ZabaWebPlugin.dll",
         "code": ""
     }
 ]
