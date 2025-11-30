@@ -1,20 +1,47 @@
-[ 
-    { 
-        "name": "web", 
-        "displayName": "Web Plugin", 
-        "author": "ZrozLOL", 
-        "version": "1.0.0", 
-        "description": "HTTP requests for Zaba+\n\nFeatures:\n• GET/POST requests\n• JSON parsing\n• File downloads\n• Website ping\n\nUsage:\nimport web\nweb:Get(\"https://api.example.com\")\nweb:Post(\"url\", data)\nweb:Download(\"url\", \"file.txt\")\nweb:Ping(\"https://google.com\")", 
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/web/ZabaWebPlugin.dll", 
-        "code": "" 
+[
+    {
+        "name": "math",
+        "displayName": "Math Library",
+        "author": "Zaba Team",
+        "version": "1.0.0",
+        "description": "Advanced mathematical functions:\n• Trigonometry (sin, cos, tan)\n• Random numbers\n• Constants (pi, e)\n• Power and roots",
+        "code": "// Math module implementation\nfunction pow(base, exp) [\n    let result = 1\n    let i = 0\n    while i < exp [\n        result = result * base\n        i = i + 1\n    ]\n    pring result\n]",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/math/ZabaMathPlugin.dll"
     },
-    { 
-        "name": "filetools", 
-        "displayName": "FileTools+", 
-        "author": "ChatGPT", 
-        "version": "1.0.0", 
-        "description": "Advanced file operations for Zaba+\n\nFeatures:\n• Read/Write files\n• Append text\n• Delete files\n• Check file existence\n• List folder contents\n• Create folders\n• Get file size\n\nUsage:\nimport filetools\nfiletools:Write(\"test.txt\", \"Hello!\")\nfiletools:Read(\"test.txt\")\nfiletools:List(\".\")", 
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/filetools/ZabaFileTools.dll", 
-        "code": "" 
+    {
+        "name": "ui",
+        "displayName": "UI Toolkit",
+        "author": "Community",
+        "version": "2.1.0",
+        "description": "Modern UI components:\n• Stylish buttons\n• Input validation\n• Modal dialogs\n• Notifications",
+        "code": "// UI module\nfunction showNotification(text) [\n    local notif = window:CreateLabel(text)\n    notif.bg = \"#2196F3\"\n    notif.textcolor = \"white\"\n    notif.size = \"300,50\"\n]",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/ui/ZabaUIPlugin.dll"
+    },
+    {
+        "name": "network",
+        "displayName": "Network Module",
+        "author": "John Doe",
+        "version": "0.5.0",
+        "description": "Network utilities:\n• HTTP requests\n• JSON parsing\n• WebSocket support\n• REST API helpers",
+        "code": "// Network module placeholder",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/network/ZabaNetworkPlugin.dll"
+    },
+    {
+        "name": "web",
+        "displayName": "Web Plugin",
+        "author": "ZrozLOL",
+        "version": "1.0.0",
+        "description": "HTTP requests for Zaba+\n\nFeatures:\n• GET/POST requests\n• JSON parsing\n• File downloads\n• Website ping\n\nUsage:\nimport web\nweb:Get(\"https://api.example.com\")\nweb:Post(\"url\", data)\nweb:Download(\"url\", \"file.txt\")\nweb:Ping(\"https://google.com\")",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/web/ZabaWebPlugin.dll",
+        "code": ""
+    },
+    {
+        "name": "filetools",
+        "displayName": "FileTools+",
+        "author": "ChatGPT",
+        "version": "1.0.0",
+        "description": "Advanced file operations for Zaba+\n\nFeatures:\n• Read/Write files\n• Append text\n• Delete files\n• Check file existence\n• List folder contents\n• Create folders\n• Get file size\n\nUsage:\nimport filetools\nfiletools:Write(\"test.txt\", \"Hello!\")\nfiletools:Read(\"test.txt\")\nfiletools:List(\".\")",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/filetools/ZabaFileTools.dll",
+        "code": ""
     }
 ]
