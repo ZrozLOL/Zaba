@@ -1,55 +1,85 @@
 # Zaba+ Programming Language 🐸
 
-**Version:** Beta 1.9
+**Version:** Beta 2.0
 
-A simple, beginner-friendly programming language designed for creating interactive applications, games, and GUI programs with minimal syntax complexity. Features a custom IDE for writing and running Zaba+ code.
+A beginner-friendly programming language for creating interactive applications, games, and GUI programs with minimal syntax. Features a custom IDE with syntax highlighting, real-time execution, and powerful built-in modules.
+
+---
 
 ## 🎯 Overview
 
-Zaba+ is an interpreted programming language built in C# that focuses on simplicity and ease of learning. It provides built-in modules for creating windows, graphics, games, and handling multimedia, making it perfect for educational purposes, game development, and rapid prototyping.
+Zaba+ is an interpreted language built in C# that focuses on **simplicity and rapid prototyping**. Perfect for:
+- Educational programming courses
+- Game development beginners
+- Rapid GUI application prototyping
+- Creative coding experiments
 
-## 🖥️ IDE
+---
 
-Zaba+ comes with its own integrated development environment featuring:
-- **Syntax Highlighting** - Color-coded keywords and syntax
-- **Real-time Console** - See output as your program runs
-- **Project System** - Organize your code files
-- **Built-in Runner** - Execute code with one click
+## 🖥️ Integrated Development Environment
+
+The Zaba+ IDE includes:
+
+| Feature | Description |
+|---------|-------------|
+| **Syntax Highlighting** | Color-coded keywords, strings, numbers, and comments |
+| **Variable Detection** | Automatic highlighting of `let` (global) and `local` (scoped) variables |
+| **Real-time Console** | Live output with status indicators (✔/❌/🛑) |
+| **Code Search** | Find and navigate through your code with Ctrl+F |
+| **Project System** | Save/load `.zab+` project files with asset management |
+| **Build to EXE** | Export standalone executables (Windows) |
+| **Plugin Marketplace** | Extend functionality with community plugins |
+
+---
 
 ## ✨ Key Features
 
-- **Simple Syntax** - Easy-to-understand code structure designed for beginners
-- **GUI Module** - Built-in window creation and UI components
-- **Game Development** - Complete game engine with physics and collision detection
-- **Graphics System** - Shape rendering with textures and colors
-- **Multimedia Support** - Audio playback with looping
-- **Event-Driven** - Responsive event handling system
-- **Real-time Execution** - Live updates and animations
+### Language Features
+- **Simple Syntax** - Easy-to-read code designed for beginners
+- **Dynamic Typing** - No complex type declarations
+- **Event-Driven** - Responsive callbacks for UI, keyboard, and collisions
+- **Real-time Execution** - Immediate feedback and live updates
+
+### Built-in Modules
+- `window` - GUI creation (forms, buttons, labels, textboxes)
+- `zabgame` - Game engine (physics, collisions, sprites)
+- `texturemodule` - Graphics and texture management
+- `soundservice` - Audio playback with looping
+
+### Advanced Features
+- **Canvas Drawing** - Lines, rectangles, custom graphics
+- **3D World Renderer** - Basic voxel-style 3D graphics
+- **Custom Functions** - Define reusable code blocks with parameters
+- **Plugin System** - Extend language with C# DLL plugins
+
+---
 
 ## 📚 Language Syntax
 
 ### Comments
 ```zaba
-// Single-line comment
+// Single-line comments
 // Everything after // is ignored
 ```
 
 ### Variables
 ```zaba
-let score = 0           // Global variable
-local name = "Player"   // Local scope variable
+let score = 0           // Global variable (accessible everywhere)
+local name = "Player"   // Local scope variable (function/block only)
 ```
 
 ### Output
 ```zaba
 pring "Hello World"     // Print to console
 pring score             // Print variable value
-pring "Score: " + score // Concatenation
+pring "Score: " + score // String concatenation
 ```
 
-### Control Flow
+---
 
-**If Statement:**
+## 🎛️ Control Flow
+
+### If/Else Statement
 ```zaba
 if score > 100 [
     pring "You win!"
@@ -58,7 +88,7 @@ if score > 100 [
 ]
 ```
 
-**While Loop:**
+### While Loop
 ```zaba
 let counter = 0
 while counter < 10 [
@@ -67,43 +97,90 @@ while counter < 10 [
 ]
 ```
 
-### Operators
-
-**Arithmetic:**
-- `+` Addition
-- `-` Subtraction
-- `*` Multiplication
-- `/` Division
-
-**Comparison:**
-- `==` Equal to
-- `!=` Not equal to
-- `>` Greater than
-- `<` Less than
-- `>=` Greater or equal
-- `<=` Less or equal
-
-**Grouping:**
+### Comparison Operators
 ```zaba
-let result = @ 5 + 3 @ * 2  // @ @ for grouping expressions
+==  // Equal to
+!=  // Not equal to
+>   // Greater than
+<   // Less than
+>=  // Greater or equal
+<=  // Less or equal
 ```
 
-### Timers
+### Math Operators
+```zaba
++   // Addition
+-   // Subtraction
+*   // Multiplication
+/   // Division
+@   // Grouping (like parentheses)
+
+let result = @ 5 + 3 @ * 2  // result = 16
+```
+
+---
+
+## ⏱️ Timers & Delays
+
+### Repeating Timer (tick)
 ```zaba
 tick(1000) [
     pring "This runs every second"
 ]
-
-waiting(3)  // Pause for 3 seconds
 ```
 
-### Program Control
+### One-time Delay (waiting)
 ```zaba
-stop:Program  // Stop execution
-clear:Console // Clear console output
+pring "Starting..."
+waiting(3)  // Pause for 3 seconds
+pring "Done!"
 ```
 
-## 📦 Module: `window` - GUI Creation
+---
+
+## 🔧 Functions
+
+### Defining Functions
+```zaba
+function greet(name) [
+    pring "Hello, " + name
+]
+
+function add(a, b) [
+    let result = a + b
+    pring result
+]
+```
+
+### Calling Functions
+```zaba
+greet("Alice")    // Output: Hello, Alice
+add(5, 3)         // Output: 8
+```
+
+---
+
+## 🧮 Math Functions
+
+```zaba
+cos(angle)    // Cosine
+sin(angle)    // Sine
+tan(angle)    // Tangent
+sqrt(number)  // Square root
+abs(number)   // Absolute value
+floor(number) // Round down
+pi            // Pi constant (3.14159...)
+```
+
+### Random Numbers
+```zaba
+let dice = random(1-6)      // Random number 1-6
+let color = random(0-255)   // Random 0-255
+```
+
+---
+
+## 🪟 Module: `window` - GUI Creation
 
 ### Import
 ```zaba
@@ -113,45 +190,42 @@ import window
 ### Creating Windows
 ```zaba
 local form = window:CreateNewForm("My Application")
+form.size = "800,600"         // Width, Height
+form.bg = "lightblue"         // Background color
+form.background = "#FF5733"   // Hex color
+form.text = "New Title"       // Window title
 ```
 
 ### Creating Buttons
 ```zaba
 local button = window:CreateButton("Click Me!")
+button.pos = "100,50"         // X, Y position
+button.size = "150,40"        // Width, Height
+button.text = "Start Game"    // Button text
+button.textcolor = "white"    // Text color
+button.bg = "green"           // Background color
+button.font = "Arial"         // Font family
+button.fontsize = "14"        // Font size
 ```
 
 ### Creating Labels
 ```zaba
 local label = window:CreateLabel("Score: 0")
-```
-
-### Window Properties
-```zaba
-form.size = "800,600"        // Width, Height
-form.bg = "lightblue"        // Background color
-form.background = "#FF5733"  // Hex color
-form.text = "New Title"      // Window title
-```
-
-### Button Properties
-```zaba
-button.pos = "100,50"        // X, Y position
-button.size = "150,40"       // Width, Height
-button.text = "Start Game"   // Button text
-button.textcolor = "white"   // Text color
-button.bg = "green"          // Background color
-button.font = "Arial"        // Font family
-button.fontsize = "14"       // Font size
-```
-
-### Label Properties
-```zaba
 label.pos = "20,20"
 label.text = "Score: 100"
 label.textcolor = "black"
-label.textbg = "transparent" // Background (transparent or color)
+label.textbg = "transparent"  // Background (transparent or color)
 label.font = "Courier New"
 label.fontsize = "16"
+```
+
+### Creating Textboxes
+```zaba
+local input = window:CreateTextbox("Enter name...", "")
+input.pos = "50,50"
+input.size = "200,30"
+input.textcolor = "black"
+input.bg = "white"
 ```
 
 ### Event Handling
@@ -160,12 +234,18 @@ button:OnClick [
     label.text = "Button was clicked!"
     pring "Click event fired"
 ]
+
+input:TextChanged [
+    pring "User typed: " + input.text
+]
 ```
 
 ### Removing Objects
 ```zaba
 button:Remove  // Remove from window
 ```
+
+---
 
 ## 🎮 Module: `zabgame` - Game Development
 
@@ -204,9 +284,9 @@ zabgame:EnableGravity("player")  // Apply gravity to object
 
 ### Game Object Properties
 ```zaba
-player.speed = 7        // Movement speed
-player.health = 100     // Health points
-player.pos = "100,200"  // Position
+player.speed = 7         // Movement speed
+player.health = 100      // Health points
+player.pos = "100,200"   // Position
 ```
 
 ### Collision Detection
@@ -221,6 +301,8 @@ zabgame:OnCollision("player", "enemy") [
     ]
 ]
 ```
+
+---
 
 ## 🎨 Module: `texturemodule` - Graphics & Textures
 
@@ -246,7 +328,7 @@ part triangle = shape("triangle", "#00FF00", 120, 120)
 ```zaba
 circle.pos = "200,100"    // Position
 circle.size = "150,150"   // Size
-circle.color = "yellow"   // Color change
+circle.color = "yellow"   // Change color
 ```
 
 ### Applying Textures
@@ -254,6 +336,33 @@ circle.color = "yellow"   // Color change
 circle:SetTexture(playerTexture)  // Apply texture to shape
 circle:RemoveTexture              // Remove texture (show color)
 ```
+
+---
+
+## 🎨 Canvas Drawing
+
+### Creating Canvas
+```zaba
+local canvas = window:CreateCanvas(800, 600)
+canvas.pos = "0,0"
+```
+
+### Drawing Commands
+```zaba
+// Draw line
+canvas:DrawLine(50, 50, 200, 200, "white")
+
+// Draw rectangle outline
+canvas:DrawRect(100, 100, 150, 80, "red")
+
+// Draw filled rectangle
+canvas:FillRect(300, 100, 150, 80, "blue")
+
+// Clear canvas
+canvas:Clear()
+```
+
+---
 
 ## 🔊 Module: `soundservice` - Audio
 
@@ -271,7 +380,7 @@ local clickSound = soundservice.Sound("click.wav")
 ### Sound Properties
 ```zaba
 bgMusic.loop = true   // Enable looping
-bgMusic.volume = 80   // Volume level
+bgMusic.volume = 80   // Volume level (0-100)
 ```
 
 ### Playback Control
@@ -279,6 +388,8 @@ bgMusic.volume = 80   // Volume level
 bgMusic:StartPlay()   // Start playing
 bgMusic:StopPlay()    // Stop playing
 ```
+
+---
 
 ## ⌨️ Keyboard Events
 
@@ -296,7 +407,23 @@ onkey("Escape") [
 ]
 ```
 
-**Supported Keys:** `W`, `A`, `S`, `D`, `Space`, `Escape`, `Enter`, arrow keys, and more.
+**Supported Keys:** `W`, `A`, `S`, `D`, `Space`, `Escape`, `Enter`, `Left`, `Right`, `Up`, `Down`, and more.
+
+---
+
+## 🖱️ Mouse Events
+
+```zaba
+onmouse(leftclick) [
+    pring "Clicked at: " + mouseX + ", " + mouseY
+]
+
+onmouse(rightclick) [
+    pring "Right click detected"
+]
+```
+
+---
 
 ## 💡 Complete Examples
 
@@ -448,104 +575,245 @@ tick(16) [
 ]
 ```
 
+### 4. Drawing App
+```zaba
+import window
+
+local form = window:CreateNewForm("Paint")
+form.size = "800,600"
+
+local canvas = window:CreateCanvas(800, 600)
+
+let drawing = false
+let lastX = 0
+let lastY = 0
+
+onmouse(leftclick) [
+    drawing = true
+    lastX = mouseX
+    lastY = mouseY
+]
+
+tick(10) [
+    if drawing == true [
+        canvas:DrawLine(lastX, lastY, mouseX, mouseY, "white")
+        lastX = mouseX
+        lastY = mouseY
+    ]
+]
+```
+
+---
+
 ## 🏗️ Technical Architecture
 
 ### 1. **Lexer** (`Lexer.cs`)
-- Tokenizes source code into tokens
-- Tracks line and column numbers for error reporting
-- Recognizes keywords, operators, literals, and identifiers
-- Supports single-line comments (`//`)
+- Tokenizes source code into keywords, operators, literals
+- Tracks line/column numbers for error reporting
+- Supports comments (`//`)
 
-### 2. **AST** (`AST.cs`)
-- Defines Abstract Syntax Tree node types
-- Statement nodes: `LetStmt`, `IfStmt`, `WhileStmt`, `TickStmt`, etc.
-- Expression nodes: `NumberExpr`, `StringExpr`, `BinaryExpr`, `VarExpr`
-- Game-specific nodes: `CreatePlayerStmt`, `OnCollisionStmt`, etc.
-
-### 3. **Parser** (`Parser.cs`)
+### 2. **Parser** (`Parser.cs`)
 - Recursive descent parser
-- Operator precedence handling
-- Module-specific syntax parsing
-- Property and method call parsing
-- Block structure with `[` `]`
+- Builds Abstract Syntax Tree (AST)
+- Handles operator precedence
+- Parses module-specific syntax
+
+### 3. **AST** (`AST.cs`)
+- Defines node types for statements and expressions
+- Statement nodes: `LetStmt`, `IfStmt`, `WhileStmt`, `FunctionDeclStmt`
+- Expression nodes: `NumberExpr`, `BinaryExpr`, `FunctionCallExpr`
 
 ### 4. **Interpreter** (`ZabkaInterpreter.cs`)
-- AST execution engine
-- Variable environment management
-- UI thread synchronization for GUI operations
+- Executes AST nodes
+- Manages variable environments (global/local scopes)
+- Handles UI thread synchronization for GUI operations
 - Event system (clicks, keys, collisions, timers)
 - Resource management (textures, sounds, game objects)
-- Physics simulation for game objects
+
+### 5. **Plugin System** (`PluginManager.cs`)
+- Loads C# DLL plugins from `Plugins/` folder
+- Interface: `IZabaPlugin`
+- Plugins can add custom commands and functionality
+
+---
 
 ## 🚀 Getting Started
 
-1. **Download** the Zaba+ IDE from the [releases page](your-github-link)
+1. **Download** the Zaba+ IDE from releases
 2. **Open** the IDE
 3. **Write** your code in the editor
 4. **Click** the run button (▶️) to execute
 5. **See** results in the console and GUI windows
+
+---
 
 ## 📝 File Structure
 
 ```
 YourProject/
 │
-├── main.zaba        # Your main code file
+├── main.zab+        # Your main code file
 ├── player.png       # Texture files
 ├── enemy.png
 ├── background.wav   # Sound files
 └── click.wav
 ```
 
-## 🛠️ Current Status (Beta 1.9)
+When you save a project, all assets (images, sounds) should be in the same folder as your `.zab+` file.
 
-**Working Features:**
-- ✅ Complete syntax highlighting
-- ✅ Variable declarations and assignments
-- ✅ Arithmetic and logical operations
-- ✅ Control flow (if/else, while loops)
-- ✅ GUI creation and management
-- ✅ Event handling (clicks, keyboard)
-- ✅ Game objects with physics
-- ✅ Collision detection system
-- ✅ Texture loading and rendering
-- ✅ Sound playback with looping
-- ✅ Timer-based execution
-- ✅ Shape rendering
+---
 
-**Known Limitations:**
-- No custom functions/procedures yet
-- No arrays or complex data structures
-- Limited file I/O operations
+## 🛠️ Build to Executable
+
+1. **Save** your project (File → Save Project)
+2. **Export** (File → Export to EXE)
+3. Find your `.exe` in the `build/` folder
+4. **Share** the entire `build/` folder (includes runtime and assets)
+
+---
+
+## 🔌 Plugin Development
+
+Create custom Zaba+ plugins in C#:
+
+```csharp
+using Zaba_.PluginBase;
+
+public class MyPlugin : IZabaPlugin
+{
+    public string Name => "myplugin";
+    public string Version => "1.0.0";
+    public string Author => "Your Name";
+    public string Description => "My custom plugin";
+
+    private ZabkaInterpreter interpreter;
+
+    public void Initialize(ZabkaInterpreter interp)
+    {
+        interpreter = interp;
+    }
+
+    public void RegisterCommands()
+    {
+        // Your custom commands here
+    }
+
+    public void Cleanup()
+    {
+        // Cleanup resources
+    }
+
+    // Custom methods callable from Zaba+
+    public void MyCustomMethod(string arg)
+    {
+        interpreter.AppendOutput("Plugin says: " + arg + "\n");
+    }
+}
+```
+
+**Usage in Zaba+:**
+```zaba
+import myplugin
+myplugin:MyCustomMethod("Hello!")
+```
+
+---
+
+## 🎯 Current Status (Beta 2.0)
+
+### ✅ Working Features
+- Complete syntax highlighting with variable detection
+- Variable declarations (`let`, `local`) with proper scoping
+- Arithmetic, logical, and comparison operations
+- Control flow (`if`/`else`, `while` loops)
+- Custom functions with parameters
+- GUI creation and management (`window` module)
+- Event handling (clicks, keyboard, mouse, collisions)
+- Game objects with physics and gravity
+- Collision detection system
+- Texture loading and rendering
+- Sound playback with looping support
+- Timer-based execution (`tick`)
+- Canvas drawing (lines, rectangles, shapes)
+- 3D voxel world renderer
+- Arrays and array access
+- Math functions (sin, cos, sqrt, etc.)
+- Random number generation
+- Plugin system for extensibility
+- Export to standalone `.exe`
+
+### 🔧 Known Limitations
+- No file I/O operations yet
 - No networking capabilities
 - Single-threaded execution
+- Limited 3D rendering (voxel-based only)
+- No debugger with breakpoints
 
-## 🎯 Roadmap
+---
 
-- [ ] User-defined functions
-- [ ] Arrays and lists
-- [ ] File reading/writing
-- [ ] More physics features (velocity, forces)
-- [ ] Particle systems
-- [ ] Animation system
-- [ ] Better error messages with stack traces
-- [ ] Debugger with breakpoints
-- [ ] Code completion in IDE
-- [ ] More built-in shapes and effects
+## 🗺️ Roadmap
+
+- [ ] **File I/O** - Read/write text files
+- [ ] **Lists/Collections** - Dynamic arrays with methods
+- [ ] **String Methods** - Split, substring, replace, etc.
+- [ ] **Better Error Messages** - Stack traces and line highlighting
+- [ ] **Debugger** - Breakpoints and step-through execution
+- [ ] **Code Completion** - IntelliSense-style autocomplete
+- [ ] **More Physics** - Velocity, forces, friction
+- [ ] **Particle Systems** - Visual effects
+- [ ] **Animation System** - Sprite animation support
+- [ ] **Networking** - HTTP requests and WebSocket support
+- [ ] **Database** - SQLite integration
+
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest features
-- Submit pull requests
-- Improve documentation
-- Share your Zaba+ projects
+Contributions are welcome! You can:
 
+- **Report bugs** - Open an issue on GitHub
+- **Suggest features** - Share your ideas
+- **Submit pull requests** - Improve code or documentation
+- **Create plugins** - Extend Zaba+ functionality
+- **Share projects** - Showcase what you've built
+
+---
+
+## 📖 Documentation
+
+### Error Messages
+- `❌ Module 'X' not imported` - Add `import X` at the top
+- `❌ Object 'X' not found` - Check variable/object name spelling
+- `❌ Expected X, got Y` - Syntax error, check brackets/operators
+- `❌ Undefined var X` - Variable not declared with `let` or `local`
+
+### Best Practices
+1. Use `local` for temporary variables inside functions
+2. Use `let` for global game state (score, health, etc.)
+3. Place `import` statements at the top of your file
+4. Test with small code snippets before building large projects
+5. Use descriptive variable names
+
+---
 
 ## 🌟 Showcase
 
-Share your Zaba+ creations! Tag them with `#ZabaPlus` or `#ZabaProgramming`
+Share your Zaba+ creations!  
+Tag them with **#ZabaPlus** or **#ZabaProgramming**
+
+---
+
+## 📄 License
+
+Zaba+ is open-source software. Check the repository for license details.
+
+---
+
+## 💬 Community
+
+- **GitHub Issues** - Report bugs and request features
+- **Discussions** - Ask questions and share ideas
+- **Plugin Marketplace** - Browse and install community plugins
 
 ---
 
