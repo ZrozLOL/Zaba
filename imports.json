@@ -9,3 +9,14 @@
         "code": ""
     }
 ]
+[
+    {
+        "name": "filetools",
+        "displayName": "FileTools+ 📁",
+        "author": "ChatGPT",
+        "version": "1.0.0",
+        "description": "Advanced file operations for Zaba+\n\n✨ Features:\n• Read/Write files\n• Append text\n• Delete files\n• Check file existence\n• List folder contents\n• Create folders\n• Get file size\n\n📚 Usage:\nimport filetools\nfiletools:Write(\"test.txt\", \"Hello!\")\nfiletools:Read(\"test.txt\")\nfiletools:List(\".\")",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/filetools/ZabaFileTools.dll",
+        "code": ""
+    }
+]
