@@ -1,22 +1,20 @@
-[
-    {
-        "name": "web",
-        "displayName": "Web Plugin",
-        "author": "ZrozLOL",
-        "version": "1.0.0",
-        "description": "HTTP requests for Zaba+\n\n Features:\n• GET/POST requests\n• JSON parsing\n• File downloads\n• Website ping\n\n Usage:\nimport web\nweb:Get(\"https://api.example.com\")\nweb:Post(\"url\", data)\nweb:Download(\"url\", \"file.txt\")\nweb:Ping(\"https://google.com\")",
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/web/ZabaWebPlugin.dll",
-        "code": ""
-    }
-]
-[
-    {
-        "name": "filetools",
-        "displayName": "FileTools+",
-        "author": "ChatGPT",
-        "version": "1.0.0",
-        "description": "Advanced file operations for Zaba+\n\n Features:\n• Read/Write files\n• Append text\n• Delete files\n• Check file existence\n• List folder contents\n• Create folders\n• Get file size\n\n Usage:\nimport filetools\nfiletools:Write(\"test.txt\", \"Hello!\")\nfiletools:Read(\"test.txt\")\nfiletools:List(\".\")",
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/filetools/ZabaFileTools.dll",
-        "code": ""
+[ 
+    { 
+        "name": "web", 
+        "displayName": "Web Plugin", 
+        "author": "ZrozLOL", 
+        "version": "1.0.0", 
+        "description": "HTTP requests for Zaba+\n\nFeatures:\n• GET/POST requests\n• JSON parsing\n• File downloads\n• Website ping\n\nUsage:\nimport web\nweb:Get(\"https://api.example.com\")\nweb:Post(\"url\", data)\nweb:Download(\"url\", \"file.txt\")\nweb:Ping(\"https://google.com\")", 
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/web/ZabaWebPlugin.dll", 
+        "code": "" 
+    },
+    { 
+        "name": "filetools", 
+        "displayName": "FileTools+", 
+        "author": "ChatGPT", 
+        "version": "1.0.0", 
+        "description": "Advanced file operations for Zaba+\n\nFeatures:\n• Read/Write files\n• Append text\n• Delete files\n• Check file existence\n• List folder contents\n• Create folders\n• Get file size\n\nUsage:\nimport filetools\nfiletools:Write(\"test.txt\", \"Hello!\")\nfiletools:Read(\"test.txt\")\nfiletools:List(\".\")", 
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/filetools/ZabaFileTools.dll", 
+        "code": "" 
     }
 ]
