@@ -1,20 +1,11 @@
 [
     {
-        "name": "ai",
-        "displayName": "AI Plugin",
+        "name": "web",
+        "displayName": "Web Plugin 🌐",
         "author": "ZrozLOL",
         "version": "1.0.0",
-        "description": "AI integration for Zaba+\n• Ask questions\n• Generate text\n• Chat with AI",
-        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/ai-v1.0.0/AIPlugin.dll",
-        "code": ""
-    },
-    {
-        "name": "discord",
-        "displayName": "Discord Bot Plugin",
-        "author": "Community",
-        "version": "2.0.0",
-        "description": "Create Discord bots easily\n• Send messages\n• Handle events\n• Manage servers",
-        "downloadUrl": "https://github.com/UserName/discord-plugin/releases/download/v2.0.0/DiscordPlugin.dll",
+        "description": "HTTP requests for Zaba+\n\n✨ Features:\n• GET/POST requests\n• JSON parsing\n• File downloads\n• Website ping\n\n📚 Usage:\nimport web\nweb:Get(\"https://api.example.com\")\nweb:Post(\"url\", data)\nweb:Download(\"url\", \"file.txt\")\nweb:Ping(\"https://google.com\")",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/web-v1.0.0/ZabaWebPlugin.dll",
         "code": ""
     }
 ]
