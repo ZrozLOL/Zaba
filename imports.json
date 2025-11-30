@@ -1,1 +1,20 @@
-
+[
+    {
+        "name": "ai",
+        "displayName": "AI Plugin",
+        "author": "ZrozLOL",
+        "version": "1.0.0",
+        "description": "AI integration for Zaba+\n• Ask questions\n• Generate text\n• Chat with AI",
+        "downloadUrl": "https://github.com/ZrozLOL/Zaba-Plugins/releases/download/ai-v1.0.0/AIPlugin.dll",
+        "code": ""
+    },
+    {
+        "name": "discord",
+        "displayName": "Discord Bot Plugin",
+        "author": "Community",
+        "version": "2.0.0",
+        "description": "Create Discord bots easily\n• Send messages\n• Handle events\n• Manage servers",
+        "downloadUrl": "https://github.com/UserName/discord-plugin/releases/download/v2.0.0/DiscordPlugin.dll",
+        "code": ""
+    }
+]
